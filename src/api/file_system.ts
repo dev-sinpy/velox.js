@@ -1,5 +1,13 @@
 import { promisified } from './helper'
 
+interface SuccessResponse {
+    result: string | object
+}
+
+interface ErrorResponse {
+    error: string
+}
+
 export async function openDialog(multiple: boolean, format ? : string[]) {
     let cmd = {
         fileSystem: {
@@ -7,7 +15,7 @@ export async function openDialog(multiple: boolean, format ? : string[]) {
         }
     };
 
-    return await promisified < string > (cmd);
+    return await promisified < SuccessResponse | ErrorResponse > (cmd);
 }
 
 export async function selectFolder() {
@@ -17,11 +25,27 @@ export async function selectFolder() {
         }
     };
 
-    return await promisified < string > (cmd);
+    return await promisified < SuccessResponse | ErrorResponse > (cmd);
 }
 
-function readTextFile(path: string) {
-    // body...
+export async function saveFile(path: String, content: number[], mode: String) {
+    let cmd = {
+        fileSystem: {
+            saveFile: { path: path, content: content, mode: mode }
+        }
+    };
+
+    return await promisified < SuccessResponse | ErrorResponse > (cmd);
+}
+
+export async function readTextFile(path: string): Promise < object > {
+    let cmd = {
+        fileSystem: {
+            readTextFile: { path: path }
+        }
+    };
+
+    return await promisified < SuccessResponse | ErrorResponse > (cmd);
 }
 
 function writeFile(file: object) {
@@ -35,7 +59,7 @@ export async function copyFile(from: string, to: string) {
         }
     };
 
-    return await promisified < string > (cmd);
+    return await promisified < SuccessResponse | ErrorResponse > (cmd);
 
 }
 
@@ -46,7 +70,7 @@ export async function createDir(path: string) {
         }
     };
 
-    return await promisified < string > (cmd);
+    return await promisified < SuccessResponse | ErrorResponse > (cmd);
 }
 
 export async function createFile(path: string) {
@@ -56,7 +80,7 @@ export async function createFile(path: string) {
         }
     };
 
-    return await promisified < string > (cmd);
+    return await promisified < SuccessResponse | ErrorResponse > (cmd);
 }
 
 export async function readDir(path: string) {
@@ -66,7 +90,7 @@ export async function readDir(path: string) {
         }
     };
 
-    return await promisified < string > (cmd);
+    return await promisified < SuccessResponse | ErrorResponse > (cmd);
 }
 
 export async function removeFile(path: string) {
@@ -76,7 +100,7 @@ export async function removeFile(path: string) {
         }
     };
 
-    return await promisified < string > (cmd);
+    return await promisified < SuccessResponse | ErrorResponse > (cmd);
 }
 
 export async function removeDir(path: string) {
@@ -86,7 +110,7 @@ export async function removeDir(path: string) {
         }
     };
 
-    return await promisified < string > (cmd);
+    return await promisified < SuccessResponse | ErrorResponse > (cmd);
 }
 
 export async function renameFile(from: string, to: string) {
@@ -96,5 +120,5 @@ export async function renameFile(from: string, to: string) {
         }
     };
 
-    return await promisified < string > (cmd);
+    return await promisified < SuccessResponse | ErrorResponse > (cmd);
 }

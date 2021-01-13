@@ -51,12 +51,12 @@ function transformCallback(
  */
 async function promisified < T > (args: any): Promise < T > {
     return await new Promise((resolve, reject) => {
-        const callback = transformCallback((e) => {
-            resolve(e)
+        const callback = transformCallback((res) => {
+            resolve(JSON.parse(res))
             Reflect.deleteProperty(window, error)
         }, true)
-        const error = transformCallback((e) => {
-            reject(e)
+        const error = transformCallback((err) => {
+            reject(JSON.parse(err))
             Reflect.deleteProperty(window, callback)
         }, true)
 

@@ -8,13 +8,13 @@ interface ErrorResponse {
     error: string
 }
 
-export async function showNotification(summary: string, body: string, timeout: number) {
+export async function exec(command: string, cwd: string, stream_output: boolean) {
     let cmd = {
-        notification: {
-            showNotification: {
-                summary: summary,
-                body: body,
-                timeout: timeout
+        subProcess: {
+            exec: {
+                cmd: command,
+                cwd: cwd,
+                stream_output: stream_output,
             }
         }
     };

@@ -3,7 +3,7 @@ node_modules
 .thumbs.db
 node_modules
 yarn.lock
-
+/web
 /dist
 
 # Log files
