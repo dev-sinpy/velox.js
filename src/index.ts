@@ -1,7 +1,3 @@
-// import * as fs from "./api/file_system";
-// import showNotification from "./api/notification";
-// import { isText, isBinary, getEncoding } from 'istextorbinary'
-
 declare global {
     interface Window {
         invoke: (cmd: any) => void
@@ -46,5 +42,4 @@ declare global {
 export * as fs from "./api/file_system";
 export { showNotification } from "./api/notification";
 export * as subprocess from "./api/subprocess";
-
-// (window as any).test = test;
+export { promisified } from "./api/helper";

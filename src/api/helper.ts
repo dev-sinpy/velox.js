@@ -68,7 +68,7 @@ async function promisified < T > (args: any): Promise < T > {
                 (a as any).error_callback = error;
             });
         });
-        window.invoke(args);
+        window.invoke(JSON.stringify(args));
     })
 }
 
