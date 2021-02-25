@@ -1,14 +1,22 @@
 {
   "name": "@dev.sinpy/velox.js",
   "version": "0.1.0",
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
+  "main": "dist/velox.js",
+  "private": false,
   "repository": "https://github.com/dev-sinpy/velox.js",
   "author": "dev-sinpy",
   "license": "MIT",
-  "private": false,
+  "scripts": {
+    "build": "webpack"
+  },
+  "browserslist": [
+    "since 2017-06"
+  ],
   "devDependencies": {
-    "typescript": "^4.1.3"
+    "ts-loader": "^8.0.17",
+    "typescript": "^4.1.3",
+    "webpack": "^5.24.2",
+    "webpack-cli": "^4.5.0"
   },
   "dependencies": {}
 }
