@@ -17,7 +17,7 @@ module.exports = {
     output: {
         filename: './velox.js',
         path: path.resolve(__dirname, 'dist'),
-        library: 'velox',
+        library: '__VELOX__',
         libraryTarget: 'window'
 
     },
