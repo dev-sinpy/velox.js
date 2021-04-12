@@ -1,5 +1,3 @@
-import { promisified } from './helper'
-
 interface SuccessResponse {
     result: string
 }
@@ -9,37 +7,13 @@ interface ErrorResponse {
 }
 
 export async function setTitle(title: string) {
-    let cmd = {
-        window: {
-            setTitle: {
-                title: title
-            }
-        }
-    };
-
-    return await promisified < SuccessResponse | ErrorResponse > (cmd);
+    return window.__VELOX__.rpc.call("set_title", title)
 }
 
 export async function setTransparent(transparent: boolean) {
-    let cmd = {
-        window: {
-            setFullscreen: {
-                transparent: transparent
-            }
-        }
-    };
-
-    return await promisified < SuccessResponse | ErrorResponse > (cmd);
+    return window.__VELOX__.rpc.call("set_transparent", transparent)
 }
 
 export async function setFullscreen(fullscreen: boolean) {
-    let cmd = {
-        window: {
-            setFullscreen: {
-                fullscreen: fullscreen
-            }
-        }
-    };
-
-    return await promisified < SuccessResponse | ErrorResponse > (cmd);
+    return window.__VELOX__.rpc.call("set_fullscreen", fullscreen)
 }

@@ -1,5 +1,3 @@
-import { promisified } from './helper'
-
 interface SuccessResponse {
     result: string
 }
@@ -9,15 +7,5 @@ interface ErrorResponse {
 }
 
 export async function showNotification(summary: string, body: string, timeout: number) {
-    let cmd = {
-        notification: {
-            showNotification: {
-                summary: summary,
-                body: body,
-                timeout: timeout
-            }
-        }
-    };
-
-    return await promisified < SuccessResponse | ErrorResponse > (cmd);
+    return window.__VELOX__.rpc.call("show_notification", summary, body, timeout)
 }

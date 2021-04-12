@@ -3,6 +3,6 @@ function send_event() {
         event: {
             veloxEvent: "Initialised"
         }
-    }
-    window.invoke(cmd);
+    };
+    window.__VELOX__.rpc.notify(JSON.stringify(cmd));
 }
