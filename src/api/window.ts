@@ -6,6 +6,10 @@ interface ErrorResponse {
     error: string
 }
 
+export async function addWindow(title: string, url: string) {
+    return window.__VELOX__.rpc.call("add_window", title, url)
+}
+
 export async function setTitle(title: string) {
     return window.__VELOX__.rpc.call("set_title", title)
 }
